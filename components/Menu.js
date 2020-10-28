@@ -46,7 +46,18 @@ function menuMaker(menuArray) {
     menuListItem.textContent = item;
   });
 
-  menuButton.addEventListener("click", () => menu.classList.toggle("menu--open"));
+  $(menuButton).click(() => {
+    $(menu).animate({ width: "toggle" }, 350);
+    event.stopPropagation();
+  });
+
+  $(document).click((event) => {
+    if ($(menuButton) !== event.target || $(menu) !== event.target) {
+      if ($(menu).is(":visible")) {
+      $(menu).animate({width: "toggle"}, 350);
+      }
+    }
+  });
 
   return menu;
 }
