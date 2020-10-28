@@ -46,18 +46,17 @@ function menuMaker(menuArray) {
     menuListItem.textContent = item;
   });
 
-  $(menuButton).click(() => {
+  $(menuButton).on("click", (event) => {
     $(menu).animate({ width: "toggle" }, 350);
     event.stopPropagation();
   });
 
-  $(document).click((event) => {
-    if ($(menuButton) !== event.target || $(menu) !== event.target) {
-      if ($(menu).is(":visible")) {
-      $(menu).animate({width: "toggle"}, 350);
-      }
+  $(document).on("click", (event) => {
+    if (event.target !== $(menu) || event.target !== $(menuButton)) {
+        $(menu).hide(350);
     }
-  });
+    event.stopPropagation();
+  })
 
   return menu;
 }

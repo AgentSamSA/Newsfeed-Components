@@ -141,16 +141,18 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   articleContent1.textContent = firstParagraph;
   articleContent2.textContent = secondParagraph;
   articleContent3.textContent = thirdParagraph;
-  expandButton.textContent = "+";
+  expandButton.textContent = "Click to Expand";
 
   expandButton.addEventListener("click", () => {
     article.classList.toggle("article-open");
     if (article.classList.contains("article-open")) {
-      expandButton.textContent = "-";
+      expandButton.textContent = "Click to Close";
     } else {
-      expandButton.textContent = "+";
+      expandButton.textContent = "Click to Expand";
     }
   });
+
+  $(expandButton)
 
   return article;
 }
