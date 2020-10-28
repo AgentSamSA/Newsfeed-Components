@@ -163,6 +163,15 @@ let fifthArticle = {
   thirdParagraph: "Most definitely yes."
 }
 
+let sixthArticle = {
+  title: "\"Wat\" is Up With JavaScript?",
+  date: "Feb 30th, 2020",
+  firstParagraph: "What happens when you try to add an empty array to an empty array in JavaScript? No, it's not empty array. No, it's not TypeError either. You get empty String, because of course!",
+  secondParagraph: "So when you add an object to an array, you will get an object. Exactly as one would expect. And if you add an array to an object, you get a 0. Now, if you add an object to an object, and this one does make sense. You will get...not a number (NaN).",
+  thirdParagraph: "Creating an array in JavaScript with a size results in an array of that size, with the elements being represented as commas, because commas are the best way of doing that, clearly. Now if you join \"wat\" to that as a string, you end up with wat 16 times. Adding 1 to that string makes it do that string + 1 16 times, like so. Now, if we subtract 1 from the string, we get...NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!"
+}
+
 data.push(fifthArticle);
+data.push(sixthArticle);
 
 data.forEach((dataObj) => articles.appendChild(articleMaker(dataObj)));
