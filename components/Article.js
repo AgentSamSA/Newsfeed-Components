@@ -124,15 +124,17 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   const articleContent2 = document.createElement("p");
   const articleContent3 = document.createElement("p");
   const expandButton = document.createElement("span");
+  const closeButton = document.createElement("span")
 
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
   article.appendChild(articleContent1);
   article.appendChild(articleContent2);
   article.appendChild(articleContent3);
+  article.appendChild(closeButton);
   article.appendChild(expandButton);
 
-  const articleElements = [articleDate, articleContent1, articleContent2, articleContent3];
+  const articleElements = [articleDate, articleContent1, articleContent2, articleContent3, closeButton];
 
   article.classList.add("article");
   articleDate.classList.add("date");
@@ -144,9 +146,20 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   articleContent2.textContent = secondParagraph;
   articleContent3.textContent = thirdParagraph;
   expandButton.textContent = "Click to Expand";
+  closeButton.textContent = "Close";
 
+  expandButtonHelper(expandButton, article, articleElements);
+
+  closeButton.addEventListener("click", () =>  {
+    $(article).animate({height: "toggle"}, 100);
+  });
+
+  return article;
+}
+
+function expandButtonHelper(expandButton, article, articleElements) {
   expandButton.addEventListener("click", () => {
-    let toggledHeight = $(article).css("height") === "400px" ? "60px" : "400px";
+    let toggledHeight = $(article).css("height") === "500px" ? "60px" : "500px";
 
     if (expandButton.textContent === "Click to Expand") {
       $(article).animate({ height: toggledHeight }, 350);
@@ -162,8 +175,6 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
       expandButton.textContent = "Click to Expand";
     }
   });
-
-  return article;
 }
 
 let fifthArticle = {
