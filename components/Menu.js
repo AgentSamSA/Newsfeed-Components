@@ -54,8 +54,8 @@ function menuMaker(menuArray) {
   $(document).on("click", (event) => {
     if (event.target !== $(menu) || event.target !== $(menuButton)) {
         $(menu).hide(350);
+        event.stopPropagation();
     }
-    event.stopPropagation();
   })
 
   return menu;

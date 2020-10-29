@@ -132,6 +132,8 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   article.appendChild(articleContent3);
   article.appendChild(expandButton);
 
+  const articleElements = [articleDate, articleContent1, articleContent2, articleContent3];
+
   article.classList.add("article");
   articleDate.classList.add("date");
   expandButton.classList.add("expandButton");
@@ -144,15 +146,22 @@ function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParag
   expandButton.textContent = "Click to Expand";
 
   expandButton.addEventListener("click", () => {
-    article.classList.toggle("article-open");
-    if (article.classList.contains("article-open")) {
+    let toggledHeight = $(article).css("height") === "400px" ? "60px" : "400px";
+
+    if (expandButton.textContent === "Click to Expand") {
+      $(article).animate({ height: toggledHeight }, 350);
+      articleElements.forEach((element) => {
+        $(element).slideDown(350);
+      });
       expandButton.textContent = "Click to Close";
     } else {
+      $(article).animate({ height: toggledHeight }, 350);
+      articleElements.forEach((element) => {
+        $(element).slideUp(350);
+      });
       expandButton.textContent = "Click to Expand";
     }
   });
-
-  $(expandButton)
 
   return article;
 }
